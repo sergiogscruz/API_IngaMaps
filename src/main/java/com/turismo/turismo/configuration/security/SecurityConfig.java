@@ -1,4 +1,4 @@
-package com.turismo.turismo.configuracao.seguranca;
+package com.turismo.turismo.configuration.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

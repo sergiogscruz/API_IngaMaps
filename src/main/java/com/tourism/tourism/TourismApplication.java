@@ -1,13 +1,13 @@
-package com.turismo.turismo;
+package com.tourism.tourism;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TurismoApplication {
+public class TourismApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TurismoApplication.class, args);
+		SpringApplication.run(TourismApplication.class, args);
 	}
 
 }

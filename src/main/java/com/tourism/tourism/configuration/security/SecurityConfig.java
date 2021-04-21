@@ -1,7 +1,6 @@
 package com.tourism.tourism.configuration.security;
 
-import com.tourism.tourism.service.CustomUserDetailService;
-
+import com.tourism.tourism.user.CustomUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;

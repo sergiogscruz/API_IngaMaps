@@ -1,4 +1,4 @@
-package com.tourism.tourism.service;
+package com.tourism.tourism.user;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,9 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
-
-import com.tourism.tourism.models.User;
-import com.tourism.tourism.repositories.UserRepository;
 
 @Component
 public class CustomUserDetailService implements UserDetailsService{

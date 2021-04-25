@@ -6,7 +6,7 @@ import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity(name = "userlogin")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class User {
 	@Getter

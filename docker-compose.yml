@@ -1,0 +1,11 @@
+version: '3'
+services:
+  database:
+    image: postgres:11
+    container_name: ingamaps-bd
+    ports:
+      - 7777:5432
+    environment:
+      POSTGRES_DB: ingamaps
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 123456

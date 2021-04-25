@@ -1,1 +1,1 @@
-INSERT INTO USER(name, user_name, password, role) VALUES('administrador', 'admin', '$2a$10$czMmB4xT1UVdEu5harWV9uESOJmX.ep.MvS9Tv06fJUTHZAkxiwTG', 'EMPLOYEE');
+INSERT INTO userlogin (name, user_name, password, role) VALUES('administrador', 'admin', '$2a$10$czMmB4xT1UVdEu5harWV9uESOJmX.ep.MvS9Tv06fJUTHZAkxiwTG', 'EMPLOYEE');

@@ -1,6 +1,8 @@
 package com.tourism.tourism.local;
 
 import com.tourism.tourism.address.AddressService;
+import com.tourism.tourism.photo.Photo;
+import com.tourism.tourism.photo.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,10 +16,17 @@ public class LocalService {
   private LocalRepository localRepository;
   @Autowired
   private AddressService addressService;
+  @Autowired
+  private PhotoService photoService;
 
   public Local save(Local local) {
     this.validateLocal(local);
     addressService.validateAddress(local.getAddress());
+    if (!Objects.isNull(local.getPhotos()) && local.getPhotos().size() > 0) {
+      for (Photo photo:local.getPhotos()) {
+        photoService.validadePhoto(photo);
+      }
+    }
     return localRepository.save(local);
   }
 

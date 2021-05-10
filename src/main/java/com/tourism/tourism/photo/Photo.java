@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,9 +15,11 @@ public class Photo {
   @Id
   @GeneratedValue
   @EqualsAndHashCode.Include
+  @NotNull
   private Long id;
 
   @Getter
   @Setter
+  @NotNull
   private String base64;
 }

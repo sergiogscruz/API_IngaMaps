@@ -8,4 +8,4 @@ public class PhotoBadRequestException extends RuntimeException {
     public PhotoBadRequestException(String message) {
         super(message);
     }
-}
+}//teste

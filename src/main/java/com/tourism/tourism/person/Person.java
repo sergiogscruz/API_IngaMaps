@@ -1,11 +1,13 @@
 package com.tourism.tourism.person;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import com.tourism.tourism.personaddress.PersonAddress;
 import com.tourism.tourism.photo.Photo;
 import com.tourism.tourism.user.User;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
@@ -14,32 +16,37 @@ import lombok.*;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Person {
   @Getter
-	@Id
-	@GeneratedValue
-	@EqualsAndHashCode.Include
-	private Long id;
+  @Id
+  @GeneratedValue
+  @EqualsAndHashCode.Include
+  @NotNull
+  private Long id;
 
   @Getter
-	@Setter
+  @Setter
+  @NotNull
   private String name;
 
   @Getter
   @Setter
   @Enumerated(EnumType.STRING)
+  @NotNull
   private PersonType personType;
 
   @Getter
   @Setter
   @OneToOne
+  @NotNull
   private User user;
 
   @Getter
   @Setter
   @OneToOne
+  @Cascade(org.hibernate.annotations.CascadeType.ALL)
   private Photo photo;
 
   @Getter
-	@Setter
+  @Setter
   @OneToOne
   private PersonAddress personAddress;
 }

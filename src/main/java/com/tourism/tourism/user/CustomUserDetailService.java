@@ -23,7 +23,7 @@ public class CustomUserDetailService implements UserDetailsService{
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Optional<User> optionalUser =  userRepository.findByUserName(username);
+		Optional<User> optionalUser =  userRepository.findByUsername(username);
 		if (!optionalUser.isPresent()) {
 			throw new UsernameNotFoundException("User not found.");
 		}
@@ -45,7 +45,7 @@ public class CustomUserDetailService implements UserDetailsService{
 			authoritiesCurrent = authoritiesTouristAnonymous;
 			break;
 		}
-		return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(), authoritiesCurrent);
+		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authoritiesCurrent);
 	}
 
 }

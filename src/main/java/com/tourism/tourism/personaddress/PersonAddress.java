@@ -3,6 +3,7 @@ package com.tourism.tourism.personaddress;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 import lombok.*;
 
@@ -12,20 +13,24 @@ import lombok.*;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class PersonAddress {
   @Getter
-	@Id
-	@GeneratedValue
-	@EqualsAndHashCode.Include
-	private Long id;
+  @Id
+  @GeneratedValue
+  @EqualsAndHashCode.Include
+  @NotNull
+  private Long id;
 
   @Getter
-	@Setter
+  @Setter
+  @NotNull
   private String country;
 
   @Getter
-	@Setter
+  @Setter
+  @NotNull
   private String state;
 
   @Getter
-	@Setter
+  @Setter
+  @NotNull
   private String city;
 }

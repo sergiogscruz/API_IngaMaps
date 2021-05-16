@@ -5,6 +5,7 @@ import com.tourism.tourism.tourist.Tourist;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -15,6 +16,7 @@ public class Travel {
   @Id
   @GeneratedValue
   @EqualsAndHashCode.Include
+  @NotNull
   private Long id;
 
   @Getter
@@ -23,19 +25,23 @@ public class Travel {
 
   @Getter
   @Setter
+  @NotNull
   private String reason;
 
   @Getter
   @Setter
+  @NotNull
   private Date date;
 
   @Getter
   @Setter
   @ManyToOne
+  @NotNull
   private Tourist tourist;
 
   @Getter
   @Setter
   @ManyToOne
+  @NotNull
   private Local local;
 }

@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -42,5 +43,25 @@ public class TravelService {
     if (Objects.isNull(local)) {
       throw new TravelBadRequestException("Local not found.");
     }
+  }
+
+  public void saveComment(Long id, String comment) {
+    Travel travel = this.validateTravelToComment(id);
+    travel.setComment(comment);
+    travelRepository.save(travel);
+  }
+
+  public Travel validateTravelToComment(Long id) {
+    Optional<Travel> travel = travelRepository.findById(id);
+    if (!travel.isPresent()) {
+      throw new TravelBadRequestException("Travel not found.");
+    }
+    if (Objects.nonNull(travel.get().getComment())) {
+      throw new TravelBadRequestException("Travel already commented.");
+    }
+    if (travel.get().getDate().after(new Date())) {
+      throw new TravelBadRequestException("Travel not done yet.");
+    }
+    return travel.get();
   }
 }

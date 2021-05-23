@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CustomUserDetailService implements UserDetailsService{
+public class CustomUserDetailService implements UserDetailsService {
 	
 	private final UserRepository userRepository;
 
@@ -23,18 +23,18 @@ public class CustomUserDetailService implements UserDetailsService{
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Optional<User> optionalUser =  userRepository.findByUsername(username);
+		Optional<UserLogin> optionalUser =  userRepository.findByUsername(username);
 		if (!optionalUser.isPresent()) {
 			throw new UsernameNotFoundException("User not found.");
 		}
-		User user = optionalUser.get();
+		UserLogin userLogin = optionalUser.get();
 		List<GrantedAuthority> authoritiesEmployee = AuthorityUtils.createAuthorityList("ROLE_EMPLOYEE");
-		List<GrantedAuthority> authoritiesTourist = AuthorityUtils.createAuthorityList("ROLE_ANONYMOUS", "ROLE_TOURIST");
+		List<GrantedAuthority> authoritiesTourist = AuthorityUtils.createAuthorityList("ROLE_TOURIST");
 		List<GrantedAuthority> authoritiesTouristAnonymous = AuthorityUtils.createAuthorityList("ROLE_ANONYMOUS");
 		
 		List<GrantedAuthority> authoritiesCurrent;
 		
-		switch (user.getRole().toString()) {
+		switch (userLogin.getRole().toString()) {
 		case "EMPLOYEE":
 			authoritiesCurrent = authoritiesEmployee;
 			break;
@@ -45,7 +45,7 @@ public class CustomUserDetailService implements UserDetailsService{
 			authoritiesCurrent = authoritiesTouristAnonymous;
 			break;
 		}
-		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authoritiesCurrent);
+		return new org.springframework.security.core.userdetails.User(userLogin.getUsername(), userLogin.getPassword(), authoritiesCurrent);
 	}
 
 }

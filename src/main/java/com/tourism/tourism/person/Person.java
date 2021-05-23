@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 
 import com.tourism.tourism.personaddress.PersonAddress;
 import com.tourism.tourism.photo.Photo;
-import com.tourism.tourism.user.User;
+import com.tourism.tourism.user.UserLogin;
 import lombok.*;
 import org.hibernate.annotations.Cascade;
 
@@ -37,7 +37,7 @@ public class Person {
   @Setter
   @OneToOne
   @NotNull
-  private User user;
+  private UserLogin userLogin;
 
   @Getter
   @Setter

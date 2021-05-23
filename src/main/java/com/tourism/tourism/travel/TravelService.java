@@ -2,6 +2,7 @@ package com.tourism.tourism.travel;
 
 import com.tourism.tourism.local.Local;
 import com.tourism.tourism.local.LocalService;
+import com.tourism.tourism.tourist.TouristService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,8 +18,11 @@ public class TravelService {
   private TravelRepository travelRepository;
   @Autowired
   private LocalService localService;
+  @Autowired
+  private TouristService touristService;
 
   public Travel save(Travel travel) {
+    travel.setTourist(touristService.getCurrentTourist());
     this.validateTravel(travel);
     return travelRepository.save(travel);
   }

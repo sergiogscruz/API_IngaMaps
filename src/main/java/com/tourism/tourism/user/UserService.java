@@ -14,27 +14,31 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User save(User user) {
-        this.validateUser(user);
-        user.setPassword(encryptPassword(user.getPassword()));
-        return userRepository.save(user);
+    public String getIdByUsername(String username) {
+        return userRepository.getIdByUsername(username);
     }
 
-    public void validateUser(User user) {
-        if (Objects.isNull(user.getUsername())) {
+    public UserLogin save(UserLogin userLogin) {
+        this.validateUser(userLogin);
+        userLogin.setPassword(encryptPassword(userLogin.getPassword()));
+        return userRepository.save(userLogin);
+    }
+
+    public void validateUser(UserLogin userLogin) {
+        if (Objects.isNull(userLogin.getUsername())) {
             throw new UserBadRequestException("User without username.");
         }
-        Optional<User> userExistent = userRepository.findByUsername(user.getUsername());
+        Optional<UserLogin> userExistent = userRepository.findByUsername(userLogin.getUsername());
         if (userExistent.isPresent()) {
             throw new UserBadRequestException("User already registered.");
         }
-        if (Objects.isNull(user.getPassword())) {
+        if (Objects.isNull(userLogin.getPassword())) {
             throw new UserBadRequestException("User without password.");
         }
-        if (Objects.isNull(user.getName())) {
+        if (Objects.isNull(userLogin.getName())) {
             throw new UserBadRequestException("User without name.");
         }
-        if (Objects.isNull(user.getRole())) {
+        if (Objects.isNull(userLogin.getRole())) {
             throw new UserBadRequestException("User without role.");
         }
     }

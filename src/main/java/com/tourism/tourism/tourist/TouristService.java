@@ -9,6 +9,8 @@ import com.tourism.tourism.photo.PhotoService;
 import com.tourism.tourism.user.Role;
 import com.tourism.tourism.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,8 +34,8 @@ public class TouristService {
   public Tourist save(Tourist tourist) {
     tourist.setPersonType(PersonType.TOURIST);
     validateTourist(tourist);
-    tourist.getUser().setRole(Role.TOURIST);
-    tourist.setUser(userService.save(tourist.getUser()));
+    tourist.getUserLogin().setRole(Role.TOURIST);
+    tourist.setUserLogin(userService.save(tourist.getUserLogin()));
     if (!Objects.isNull(tourist.getPhoto())) {
       photoService.validadePhoto(tourist.getPhoto());
     }
@@ -54,7 +56,7 @@ public class TouristService {
     if (Objects.isNull(tourist.getName())) {
       throw new PersonBadRequestException("Tourist without name.");
     }
-    if (Objects.isNull(tourist.getUser())) {
+    if (Objects.isNull(tourist.getUserLogin())) {
       throw new PersonBadRequestException("Tourist without user.");
     }
     if (Objects.isNull(tourist.getPersonAddress())) {
@@ -65,5 +67,12 @@ public class TouristService {
   public PersonAddress savePersonAddress(PersonAddress personAddress) {
     personAddressService.validatePersonAddress(personAddress);
     return personAddressRepository.save(personAddress);
+  }
+
+  public Tourist getCurrentTourist() {
+    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    return touristRepository.getByUserLoginId(
+            userService.getIdByUsername(((User) principal).getUsername())
+    );
   }
 }

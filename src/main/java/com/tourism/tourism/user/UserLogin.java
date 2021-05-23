@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Entity(name = "userlogin")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class User {
+public class UserLogin {
 	@Getter
 	@Id
 	@EqualsAndHashCode.Include
@@ -38,7 +38,7 @@ public class User {
 	@NotNull
 	private Role role;
 
-	public User(){
+	public UserLogin(){
 		this.id = UUID.randomUUID().toString();
 	}
 }

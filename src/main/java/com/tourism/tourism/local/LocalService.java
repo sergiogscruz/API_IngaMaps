@@ -48,4 +48,12 @@ public class LocalService {
   public Local getById(Long id) {
     return localRepository.findById(id).orElse(null);
   }
+
+  public Local getAndValidateById(Long id) {
+    Local local = getById(id);
+    if (Objects.isNull(local)) {
+      throw new LocalBadRequestException("Local not found.");
+    }
+    return local;
+  }
 }

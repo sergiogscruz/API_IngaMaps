@@ -1,5 +1,6 @@
 package com.tourism.tourism.contact;
 
+import com.tourism.tourism.contact.exceptions.ContactBadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

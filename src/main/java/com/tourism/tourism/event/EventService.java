@@ -1,5 +1,6 @@
 package com.tourism.tourism.event;
 
+import com.tourism.tourism.event.exceptions.EventBadRequestException;
 import com.tourism.tourism.local.Local;
 import com.tourism.tourism.local.LocalRepository;
 import com.tourism.tourism.photo.PhotoService;

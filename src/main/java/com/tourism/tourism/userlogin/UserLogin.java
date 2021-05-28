@@ -3,6 +3,7 @@ package com.tourism.tourism.userlogin;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import com.tourism.tourism.userlogin.enums.Role;
 import lombok.*;
 
 @Entity(name = "userlogin")

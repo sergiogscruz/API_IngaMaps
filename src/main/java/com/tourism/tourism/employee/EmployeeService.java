@@ -1,9 +1,9 @@
 package com.tourism.tourism.employee;
 
-import com.tourism.tourism.person.PersonBadRequestException;
-import com.tourism.tourism.person.PersonType;
+import com.tourism.tourism.person.exceptions.PersonBadRequestException;
+import com.tourism.tourism.person.enums.PersonType;
 import com.tourism.tourism.photo.PhotoService;
-import com.tourism.tourism.userlogin.Role;
+import com.tourism.tourism.userlogin.enums.Role;
 import com.tourism.tourism.userlogin.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,5 +1,6 @@
 package com.tourism.tourism.photo;
 
+import com.tourism.tourism.photo.exceptions.PhotoBadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,12 +1,12 @@
 package com.tourism.tourism.userlogin;
 
-import com.tourism.tourism.auth.dto.ChangePasswordDto;
+import com.tourism.tourism.auth.dtos.ChangePasswordDto;
+import com.tourism.tourism.userlogin.exceptions.UserLoginBadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 

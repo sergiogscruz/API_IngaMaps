@@ -3,6 +3,7 @@ package com.tourism.tourism.person;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import com.tourism.tourism.person.enums.PersonType;
 import com.tourism.tourism.personaddress.PersonAddress;
 import com.tourism.tourism.photo.Photo;
 import com.tourism.tourism.userlogin.UserLogin;

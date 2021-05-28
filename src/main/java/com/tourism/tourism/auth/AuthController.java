@@ -1,7 +1,7 @@
 package com.tourism.tourism.auth;
 
-import com.tourism.tourism.auth.dto.ChangePasswordDto;
-import com.tourism.tourism.auth.dto.LoginDto;
+import com.tourism.tourism.auth.dtos.ChangePasswordDto;
+import com.tourism.tourism.auth.dtos.LoginDto;
 import com.tourism.tourism.userlogin.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

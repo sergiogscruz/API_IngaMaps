@@ -1,11 +1,11 @@
-package com.tourism.tourism.contact;
+package com.tourism.tourism.userlogin.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-public class ContactBadRequestException extends RuntimeException {
-    public ContactBadRequestException(String message) {
+public class UserLoginBadRequestException extends RuntimeException {
+    public UserLoginBadRequestException(String message) {
         super(message);
     }
 }

@@ -1,4 +1,4 @@
-package com.tourism.tourism.evaluation;
+package com.tourism.tourism.evaluation.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

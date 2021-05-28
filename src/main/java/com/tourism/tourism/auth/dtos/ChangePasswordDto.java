@@ -1,4 +1,4 @@
-package com.tourism.tourism.auth.dto;
+package com.tourism.tourism.auth.dtos;
 
 import lombok.Getter;
 import lombok.Setter;

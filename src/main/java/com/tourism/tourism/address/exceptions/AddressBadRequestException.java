@@ -1,11 +1,11 @@
-package com.tourism.tourism.person;
+package com.tourism.tourism.address.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-public class PersonBadRequestException extends RuntimeException {
-    public PersonBadRequestException(String message) {
+public class AddressBadRequestException extends RuntimeException {
+    public AddressBadRequestException(String message) {
         super(message);
     }
 }

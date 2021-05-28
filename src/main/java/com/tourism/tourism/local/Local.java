@@ -1,6 +1,7 @@
 package com.tourism.tourism.local;
 
 import com.tourism.tourism.address.Address;
+import com.tourism.tourism.local.enums.LocalCategory;
 import com.tourism.tourism.photo.Photo;
 import lombok.*;
 import org.hibernate.annotations.Cascade;

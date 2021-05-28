@@ -1,5 +1,6 @@
 package com.tourism.tourism.personaddress;
 
+import com.tourism.tourism.personaddress.exceptions.PersonAddressBadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

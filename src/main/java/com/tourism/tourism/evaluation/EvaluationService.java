@@ -1,5 +1,6 @@
 package com.tourism.tourism.evaluation;
 
+import com.tourism.tourism.evaluation.exceptions.EvaluationBadRequestException;
 import com.tourism.tourism.local.LocalService;
 import com.tourism.tourism.tourist.TouristService;
 import org.springframework.beans.factory.annotation.Autowired;

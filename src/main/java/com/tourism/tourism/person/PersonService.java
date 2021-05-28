@@ -1,8 +1,8 @@
 package com.tourism.tourism.person;
 
-import com.tourism.tourism.person.dto.PersonChangePhotoDTO;
+import com.tourism.tourism.person.dtos.PersonChangePhotoDTO;
+import com.tourism.tourism.person.exceptions.PersonBadRequestException;
 import com.tourism.tourism.photo.Photo;
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

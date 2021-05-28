@@ -1,5 +1,6 @@
 package com.tourism.tourism.contact;
 
+import com.tourism.tourism.contact.enums.ContactCategory;
 import lombok.*;
 
 import javax.persistence.*;

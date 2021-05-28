@@ -3,6 +3,7 @@ package com.tourism.tourism.travel;
 import com.tourism.tourism.local.Local;
 import com.tourism.tourism.local.LocalService;
 import com.tourism.tourism.tourist.TouristService;
+import com.tourism.tourism.travel.exceptions.TravelBadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

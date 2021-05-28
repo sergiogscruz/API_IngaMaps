@@ -1,6 +1,6 @@
 package com.tourism.tourism.person;
 
-import com.tourism.tourism.person.dto.PersonChangePhotoDTO;
+import com.tourism.tourism.person.dtos.PersonChangePhotoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

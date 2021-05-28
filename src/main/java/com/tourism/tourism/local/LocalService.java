@@ -1,6 +1,7 @@
 package com.tourism.tourism.local;
 
 import com.tourism.tourism.address.AddressService;
+import com.tourism.tourism.local.exceptions.LocalBadRequestException;
 import com.tourism.tourism.photo.Photo;
 import com.tourism.tourism.photo.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;

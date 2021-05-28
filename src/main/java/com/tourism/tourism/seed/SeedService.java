@@ -2,10 +2,10 @@ package com.tourism.tourism.seed;
 
 import com.tourism.tourism.employee.Employee;
 import com.tourism.tourism.employee.EmployeeService;
-import com.tourism.tourism.person.PersonType;
+import com.tourism.tourism.person.enums.PersonType;
 import com.tourism.tourism.tourist.Tourist;
 import com.tourism.tourism.tourist.TouristService;
-import com.tourism.tourism.userlogin.Role;
+import com.tourism.tourism.userlogin.enums.Role;
 import com.tourism.tourism.userlogin.UserLogin;
 import com.tourism.tourism.userlogin.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;

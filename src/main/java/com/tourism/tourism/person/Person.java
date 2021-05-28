@@ -13,7 +13,6 @@ import org.hibernate.annotations.Cascade;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Person {
   @Getter
   @Id

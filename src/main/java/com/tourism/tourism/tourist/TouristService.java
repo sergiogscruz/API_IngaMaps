@@ -31,6 +31,10 @@ public class TouristService {
   @Autowired
   private PersonAddressService personAddressService;
 
+  public Tourist saveTouristAnonymous(Tourist touristAnonymous) {
+    return touristRepository.save(touristAnonymous);
+  }
+
   public Tourist save(Tourist tourist) {
     tourist.setPersonType(PersonType.TOURIST);
     validateTourist(tourist);

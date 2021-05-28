@@ -21,6 +21,10 @@ public class EmployeeService {
   @Autowired
   private PhotoService photoService;
 
+  public Employee saveEmployeeAdmin(Employee employee) {
+    return employeeRepository.save(employee);
+  }
+
   public Employee save(Employee employee) {
     employee.setPersonType(PersonType.EMPLOYEE);
     validateEmployee(employee);

@@ -5,16 +5,14 @@ import javax.validation.constraints.NotNull;
 
 import lombok.*;
 
-import java.util.UUID;
-
 @Entity(name = "userlogin")
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class UserLogin {
 	@Getter
 	@Id
+	@GeneratedValue
 	@EqualsAndHashCode.Include
 	@NotNull
-	private String id;
+	private Long id;
 	
 	@Getter
 	@Setter
@@ -37,8 +35,4 @@ public class UserLogin {
 	@Enumerated(EnumType.STRING)
 	@NotNull
 	private Role role;
-
-	public UserLogin(){
-		this.id = UUID.randomUUID().toString();
-	}
 }

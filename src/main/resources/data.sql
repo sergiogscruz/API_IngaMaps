@@ -1,1 +1,0 @@
-INSERT INTO userlogin (id, name, username, password, role) VALUES('db14792a-2dd9-4ca1-8c53-1057fdd9c85f','administrador', 'admin', '$2a$10$czMmB4xT1UVdEu5harWV9uESOJmX.ep.MvS9Tv06fJUTHZAkxiwTG', 'EMPLOYEE');

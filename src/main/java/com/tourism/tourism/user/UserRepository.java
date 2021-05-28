@@ -10,5 +10,5 @@ public interface UserRepository extends JpaRepository<UserLogin, Long>{
 	Optional<UserLogin> findByUsername(String username);
 
 	@Query("select u.id from userlogin u where u.username = :username")
-	String getIdByUsername(@Param("username") String username);
+	Long getIdByUsername(@Param("username") String username);
 }

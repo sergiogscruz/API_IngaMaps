@@ -3,8 +3,8 @@ package com.tourism.tourism.employee;
 import com.tourism.tourism.person.PersonBadRequestException;
 import com.tourism.tourism.person.PersonType;
 import com.tourism.tourism.photo.PhotoService;
-import com.tourism.tourism.user.Role;
-import com.tourism.tourism.user.UserService;
+import com.tourism.tourism.userlogin.Role;
+import com.tourism.tourism.userlogin.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +17,7 @@ public class EmployeeService {
   @Autowired
   private EmployeeRepository employeeRepository;
   @Autowired
-  private UserService userService;
+  private UserLoginService userLoginService;
   @Autowired
   private PhotoService photoService;
 
@@ -29,7 +29,7 @@ public class EmployeeService {
     employee.setPersonType(PersonType.EMPLOYEE);
     validateEmployee(employee);
     employee.getUserLogin().setRole(Role.EMPLOYEE);
-    employee.setUserLogin(userService.save(employee.getUserLogin()));
+    employee.setUserLogin(userLoginService.save(employee.getUserLogin()));
     if (!Objects.isNull(employee.getPhoto())) {
       photoService.validadePhoto(employee.getPhoto());
     }

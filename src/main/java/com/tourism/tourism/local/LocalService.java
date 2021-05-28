@@ -4,6 +4,8 @@ import com.tourism.tourism.address.AddressService;
 import com.tourism.tourism.photo.Photo;
 import com.tourism.tourism.photo.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -55,5 +57,13 @@ public class LocalService {
       throw new LocalBadRequestException("Local not found.");
     }
     return local;
+  }
+
+  public Page<Local> getAll(Pageable page, String localName) {
+    if (localName == null || localName.trim().length() == 0) {
+      return localRepository.findAll(page);            
+    }
+
+    return localRepository.findByNameLike(page, "%" + localName + "%");
   }
 }

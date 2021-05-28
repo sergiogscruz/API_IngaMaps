@@ -1,6 +1,6 @@
 package com.tourism.tourism.configuration.security;
 
-import com.tourism.tourism.user.CustomUserDetailService;
+import com.tourism.tourism.userlogin.CustomUserLoginDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
-	private CustomUserDetailService customUserDetailService;
+	private CustomUserLoginDetailService customUserLoginDetailService;
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -56,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(customUserDetailService).passwordEncoder(new BCryptPasswordEncoder());
+		auth.userDetailsService(customUserLoginDetailService).passwordEncoder(new BCryptPasswordEncoder());
 	}
 
 	@Override @Bean

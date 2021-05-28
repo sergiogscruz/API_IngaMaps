@@ -1,4 +1,4 @@
-package com.tourism.tourism.user;
+package com.tourism.tourism.userlogin;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

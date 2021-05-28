@@ -1,4 +1,4 @@
-package com.tourism.tourism.user;
+package com.tourism.tourism.userlogin;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,18 +12,18 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CustomUserDetailService implements UserDetailsService {
+public class CustomUserLoginDetailService implements UserDetailsService {
 	
-	private final UserRepository userRepository;
+	private final UserLoginRepository userLoginRepository;
 
 	@Autowired
-	public CustomUserDetailService(UserRepository userRepository) {
-		this.userRepository = userRepository;
+	public CustomUserLoginDetailService(UserLoginRepository userLoginRepository) {
+		this.userLoginRepository = userLoginRepository;
 	}
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Optional<UserLogin> optionalUser =  userRepository.findByUsername(username);
+		Optional<UserLogin> optionalUser =  userLoginRepository.findByUsername(username);
 		if (!optionalUser.isPresent()) {
 			throw new UsernameNotFoundException("User not found.");
 		}

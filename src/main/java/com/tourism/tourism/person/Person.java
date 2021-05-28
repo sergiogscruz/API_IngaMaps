@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 
 import com.tourism.tourism.personaddress.PersonAddress;
 import com.tourism.tourism.photo.Photo;
-import com.tourism.tourism.user.UserLogin;
+import com.tourism.tourism.userlogin.UserLogin;
 import lombok.*;
 import org.hibernate.annotations.Cascade;
 

@@ -6,8 +6,8 @@ import com.tourism.tourism.personaddress.PersonAddress;
 import com.tourism.tourism.personaddress.PersonAddressRepository;
 import com.tourism.tourism.personaddress.PersonAddressService;
 import com.tourism.tourism.photo.PhotoService;
-import com.tourism.tourism.user.Role;
-import com.tourism.tourism.user.UserService;
+import com.tourism.tourism.userlogin.Role;
+import com.tourism.tourism.userlogin.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -23,7 +23,7 @@ public class TouristService {
   @Autowired
   private TouristRepository touristRepository;
   @Autowired
-  private UserService userService;
+  private UserLoginService userLoginService;
   @Autowired
   private PhotoService photoService;
   @Autowired
@@ -39,7 +39,7 @@ public class TouristService {
     tourist.setPersonType(PersonType.TOURIST);
     validateTourist(tourist);
     tourist.getUserLogin().setRole(Role.TOURIST);
-    tourist.setUserLogin(userService.save(tourist.getUserLogin()));
+    tourist.setUserLogin(userLoginService.save(tourist.getUserLogin()));
     if (!Objects.isNull(tourist.getPhoto())) {
       photoService.validadePhoto(tourist.getPhoto());
     }
@@ -76,7 +76,7 @@ public class TouristService {
   public Tourist getCurrentTourist() {
     Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     return touristRepository.getByUserLoginId(
-            userService.getIdByUsername(((User) principal).getUsername())
+            userLoginService.getIdByUsername(((User) principal).getUsername())
     );
   }
 }

@@ -5,9 +5,9 @@ import com.tourism.tourism.employee.EmployeeService;
 import com.tourism.tourism.person.PersonType;
 import com.tourism.tourism.tourist.Tourist;
 import com.tourism.tourism.tourist.TouristService;
-import com.tourism.tourism.user.Role;
-import com.tourism.tourism.user.UserLogin;
-import com.tourism.tourism.user.UserService;
+import com.tourism.tourism.userlogin.Role;
+import com.tourism.tourism.userlogin.UserLogin;
+import com.tourism.tourism.userlogin.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +22,7 @@ public class SeedService {
     @Autowired
     private EmployeeService employeeService;
     @Autowired
-    private UserService userService;
+    private UserLoginService userLoginService;
 
     public void runAll() {
         runTouristAnonymous();
@@ -30,7 +30,7 @@ public class SeedService {
     }
 
     public void runTouristAnonymous() {
-        Long userLoginIdExistent = userService.getIdByUsername("anonimo");
+        Long userLoginIdExistent = userLoginService.getIdByUsername("anonimo");
         if (Objects.isNull(userLoginIdExistent)) {
             UserLogin userLogin = new UserLogin();
             userLogin.setUsername("anonimo");
@@ -41,14 +41,14 @@ public class SeedService {
             Tourist touristAnonymous = new Tourist();
             touristAnonymous.setName("Anônimo");
             touristAnonymous.setPersonType(PersonType.TOURIST_ANONYMOUS);
-            touristAnonymous.setUserLogin(userService.save(userLogin));
+            touristAnonymous.setUserLogin(userLoginService.save(userLogin));
 
             touristService.saveTouristAnonymous(touristAnonymous);
         }
     }
 
     public void runEmployeeAdmin() {
-        Long userLoginIdExistent = userService.getIdByUsername("admin");
+        Long userLoginIdExistent = userLoginService.getIdByUsername("admin");
         if (Objects.isNull(userLoginIdExistent)) {
             UserLogin userLogin = new UserLogin();
             userLogin.setUsername("admin");
@@ -59,7 +59,7 @@ public class SeedService {
             Employee employeeAdmin = new Employee();
             employeeAdmin.setName("Admin");
             employeeAdmin.setPersonType(PersonType.EMPLOYEE);
-            employeeAdmin.setUserLogin(userService.save(userLogin));
+            employeeAdmin.setUserLogin(userLoginService.save(userLogin));
 
             employeeService.saveEmployeeAdmin(employeeAdmin);
         }

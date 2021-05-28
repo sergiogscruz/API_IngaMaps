@@ -1,5 +1,6 @@
 package com.tourism.tourism.userlogin;
 
+import com.tourism.tourism.auth.dto.ChangePasswordDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -49,15 +50,15 @@ public class UserLoginService {
         return passwordEncoder.encode(password);
     }
 
-    public void changePassword(Map credentials) {
-        validateCredentialsToChangePassword(credentials);
-        Optional<UserLogin> userLogin = userLoginRepository.findByUsername(credentials.get("username").toString());
-        userLogin.get().setPassword(encryptPassword(credentials.get("newPassword").toString()));
+    public void changePassword(ChangePasswordDto changePasswordDto) {
+        validateNewPassword(changePasswordDto);
+        Optional<UserLogin> userLogin = userLoginRepository.findByUsername(changePasswordDto.getUsername());
+        userLogin.get().setPassword(encryptPassword(changePasswordDto.getNewPassword()));
         userLoginRepository.save(userLogin.get());
     }
 
-    public void validateCredentialsToChangePassword(Map credentials) {
-        if (Objects.isNull(credentials.get("newPassword")) || credentials.get("newPassword").toString().isBlank()) {
+    public void validateNewPassword(ChangePasswordDto changePasswordDto) {
+        if (Objects.isNull(changePasswordDto.getNewPassword()) || changePasswordDto.getNewPassword().isBlank()) {
             throw new UserLoginBadRequestException("Without new password.");
         }
     }

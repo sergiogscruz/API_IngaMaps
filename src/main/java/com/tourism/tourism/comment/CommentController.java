@@ -1,5 +1,6 @@
 package com.tourism.tourism.comment;
 
+import com.tourism.tourism.comment.dtos.CommentLocalDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,8 +11,7 @@ public class CommentController {
   private CommentService commentService;
 
   @PostMapping
-  public Comment commentLocal(@RequestParam Long localId,
-                           @RequestBody String comment) {
-    return commentService.commentLocal(localId, comment);
+  public void commentLocal(@RequestBody CommentLocalDto commentLocalDto) {
+    commentService.commentLocal(commentLocalDto);
   }
 }

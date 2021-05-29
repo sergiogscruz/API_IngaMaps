@@ -1,5 +1,7 @@
 package com.tourism.tourism.comment;
 
+import com.tourism.tourism.comment.dtos.CommentLocalDto;
+import com.tourism.tourism.local.Local;
 import com.tourism.tourism.local.LocalService;
 import com.tourism.tourism.tourist.TouristService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +18,12 @@ public class CommentService {
   @Autowired
   private TouristService touristService;
 
-  public Comment commentLocal(Long localId, String commentString) {
+  public void commentLocal(CommentLocalDto commentLocalDto) {
+    Local local = localService.getAndValidateById(commentLocalDto.getLocalId());
     Comment comment = new Comment();
-    comment.setComment(commentString);
-    comment.setLocal(localService.getAndValidateById(localId));
+    comment.setComment(commentLocalDto.getCommentString());
     comment.setTourist(touristService.getCurrentTourist());
-    return commentRepository.save(comment);
+    local.getComments().add(commentRepository.save(comment));
+    localService.save(local);
   }
 }

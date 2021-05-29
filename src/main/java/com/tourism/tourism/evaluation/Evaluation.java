@@ -1,6 +1,5 @@
 package com.tourism.tourism.evaluation;
 
-import com.tourism.tourism.local.Local;
 import com.tourism.tourism.tourist.Tourist;
 import lombok.*;
 
@@ -24,9 +23,4 @@ public class Evaluation {
   @Setter
   @ManyToOne
   private Tourist tourist;
-
-  @Getter
-  @Setter
-  @ManyToOne
-  private Local local;
 }

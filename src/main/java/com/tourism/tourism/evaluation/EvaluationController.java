@@ -1,5 +1,6 @@
 package com.tourism.tourism.evaluation;
 
+import com.tourism.tourism.evaluation.dtos.EvaluateLocalDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,8 +11,7 @@ public class EvaluationController {
   private EvaluationService evaluationService;
 
   @PostMapping
-  public Evaluation evaluateLocal(@RequestParam Long localId,
-                                  @RequestParam Integer note) {
-    return evaluationService.evaluateLocal(localId, note);
+  public void evaluateLocal(@RequestBody EvaluateLocalDto evaluateLocalDto) {
+    evaluationService.evaluateLocal(evaluateLocalDto);
   }
 }

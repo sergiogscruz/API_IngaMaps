@@ -8,15 +8,20 @@ import com.tourism.tourism.tourist.TouristService;
 import com.tourism.tourism.userlogin.enums.Role;
 import com.tourism.tourism.userlogin.UserLogin;
 import com.tourism.tourism.userlogin.UserLoginService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.Objects;
 
 @Service
 @Transactional
 public class SeedService {
+    private final static Logger log = LoggerFactory.getLogger(SeedService.class);
+
     @Autowired
     private TouristService touristService;
     @Autowired
@@ -25,11 +30,14 @@ public class SeedService {
     private UserLoginService userLoginService;
 
     public void runAll() {
+        log.info("Started run all: " + new Date());
         runTouristAnonymous();
         runEmployeeAdmin();
+        log.info("Finished run all: " + new Date());
     }
 
     public void runTouristAnonymous() {
+        log.info("Started run tourist anonymous: " + new Date());
         Long userLoginIdExistent = userLoginService.getIdByUsername("anonimo");
         if (Objects.isNull(userLoginIdExistent)) {
             UserLogin userLogin = new UserLogin();
@@ -45,9 +53,11 @@ public class SeedService {
 
             touristService.saveTouristAnonymous(touristAnonymous);
         }
+        log.info("Finished run tourist anonymous: " + new Date());
     }
 
     public void runEmployeeAdmin() {
+        log.info("Started run employee admin: " + new Date());
         Long userLoginIdExistent = userLoginService.getIdByUsername("admin");
         if (Objects.isNull(userLoginIdExistent)) {
             UserLogin userLogin = new UserLogin();
@@ -63,5 +73,6 @@ public class SeedService {
 
             employeeService.saveEmployeeAdmin(employeeAdmin);
         }
+        log.info("Finished run employee admin: " + new Date());
     }
 }

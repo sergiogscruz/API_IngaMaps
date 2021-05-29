@@ -1,6 +1,8 @@
 package com.tourism.tourism.local;
 
 import com.tourism.tourism.address.Address;
+import com.tourism.tourism.comment.Comment;
+import com.tourism.tourism.evaluation.Evaluation;
 import com.tourism.tourism.local.enums.LocalCategory;
 import com.tourism.tourism.photo.Photo;
 import lombok.*;
@@ -49,4 +51,14 @@ public class Local {
   @Cascade(org.hibernate.annotations.CascadeType.ALL)
   @NotNull
   private Address address;
+
+  @Getter
+  @Setter
+  @OneToMany
+  private List<Comment> comments;
+
+  @Getter
+  @Setter
+  @OneToMany
+  private List<Evaluation> evaluations;
 }

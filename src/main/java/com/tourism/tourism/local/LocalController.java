@@ -22,8 +22,8 @@ public class LocalController {
   }
 
   @GetMapping
-  public Page<Local> get(Pageable page, @RequestParam(name = "localName", required = false) String localName) {
-    return localService.getAll(page, localName);
+  public Page<Local> get(Pageable page, @RequestParam(name = "localName", required = false) String localName, @RequestParam(name = "localCategory", required = false) LocalCategory localCategory) {
+    return localService.getAll(page, localName, localCategory);
   }
 
 }

@@ -59,11 +59,17 @@ public class LocalService {
     return local;
   }
 
-  public Page<Local> getAll(Pageable page, String localName) {
-    if (localName == null || localName.trim().length() == 0) {
+  public Page<Local> getAll(Pageable page, String localName, LocalCategory localCategory) {
+    if ((localName == null || localName.trim().length() == 0) && localCategory == null) {
       return localRepository.findAll(page);            
     }
 
-    return localRepository.findByNameLike(page, "%" + localName + "%");
+    if (localCategory == null) {
+      return localRepository.findByNameLike(page, "%" + localName + "%");
+    }
+
+    return localRepository.findByNameLikeAndCategory(page, "%" + localName + "%", localCategory);
+
   }
+
 }

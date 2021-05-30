@@ -2,6 +2,8 @@ package com.tourism.tourism.contact;
 
 import com.tourism.tourism.contact.exceptions.ContactBadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,5 +36,9 @@ public class ContactService {
     if (Objects.isNull(contact.getCategory())) {
       throw new ContactBadRequestException("Contact without category.");
     }
+  }
+
+  public Page<Contact> getContactsByNameAndCategory(Pageable pageable, String name, String category) {
+    return contactRepository.getContactsByNameAndCategory(pageable, name, category);
   }
 }

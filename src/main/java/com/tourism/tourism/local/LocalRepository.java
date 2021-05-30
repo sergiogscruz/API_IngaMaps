@@ -3,6 +3,7 @@ package com.tourism.tourism.local;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import com.tourism.tourism.local.enums.LocalCategory;
 
 public interface LocalRepository extends JpaRepository<Local, Long> {
 

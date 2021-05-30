@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
+import com.tourism.tourism.local.enums.LocalCategory;
 
 @RestController
 @RequestMapping("/api/local")

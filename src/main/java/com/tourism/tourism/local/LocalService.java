@@ -5,8 +5,11 @@ import com.tourism.tourism.local.exceptions.LocalBadRequestException;
 import com.tourism.tourism.photo.Photo;
 import com.tourism.tourism.photo.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.tourism.tourism.local.enums.LocalCategory;
 
 import java.util.Objects;
 
@@ -57,4 +60,18 @@ public class LocalService {
     }
     return local;
   }
+
+  public Page<Local> getAll(Pageable page, String localName, LocalCategory localCategory) {
+    if ((localName == null || localName.trim().length() == 0) && localCategory == null) {
+      return localRepository.findAll(page);            
+    }
+
+    if (localCategory == null) {
+      return localRepository.findByNameLike(page, "%" + localName + "%");
+    }
+
+    return localRepository.findByNameLikeAndCategory(page, "%" + localName + "%", localCategory);
+
+  }
+
 }

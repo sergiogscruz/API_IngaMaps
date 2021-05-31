@@ -69,6 +69,10 @@ public class LocalService {
       return localRepository.findByNameLike(page, "%" + localName + "%");
     }
 
+    if (localName == null) {
+      localName = "";
+    }
+
     return localRepository.findByNameLikeAndCategory(page, "%" + localName + "%", localCategory);
 
   }

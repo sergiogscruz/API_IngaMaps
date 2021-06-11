@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping("/api/public/seed")
@@ -24,5 +25,9 @@ public class SeedController {
     @PutMapping(path = "employee-admin")
     public void runEmployeeAdmin() {
     seedService.runEmployeeAdmin();
+    }
+    @GetMapping(path = "teste")
+    public Boolean teste() {
+        return true;
     }
 }

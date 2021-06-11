@@ -38,8 +38,8 @@ public class SeedService {
 
     public void runTouristAnonymous() {
         log.info("Started run tourist anonymous: " + new Date());
-        Long userLoginIdExistent = userLoginService.getIdByUsername("anonimo");
-        if (Objects.isNull(userLoginIdExistent)) {
+        //Long userLoginIdExistent = userLoginService.getIdByUsername("anonimo");
+        //if (Objects.isNull(userLoginIdExistent)) {
             UserLogin userLogin = new UserLogin();
             userLogin.setUsername("anonimo");
             userLogin.setPassword("ingamaps");
@@ -52,14 +52,14 @@ public class SeedService {
             touristAnonymous.setUserLogin(userLoginService.save(userLogin));
 
             touristService.saveTouristAnonymous(touristAnonymous);
-        }
+        //}
         log.info("Finished run tourist anonymous: " + new Date());
     }
 
     public void runEmployeeAdmin() {
         log.info("Started run employee admin: " + new Date());
-        Long userLoginIdExistent = userLoginService.getIdByUsername("admin");
-        if (Objects.isNull(userLoginIdExistent)) {
+        //Long userLoginIdExistent = userLoginService.getIdByUsername("admin");
+        //if (Objects.isNull(userLoginIdExistent)) {
             UserLogin userLogin = new UserLogin();
             userLogin.setUsername("admin");
             userLogin.setPassword("123456");
@@ -72,7 +72,7 @@ public class SeedService {
             employeeAdmin.setUserLogin(userLoginService.save(userLogin));
 
             employeeService.saveEmployeeAdmin(employeeAdmin);
-        }
+        //}
         log.info("Finished run employee admin: " + new Date());
     }
 }
